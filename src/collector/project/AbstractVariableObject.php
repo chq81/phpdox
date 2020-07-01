@@ -72,6 +72,7 @@ abstract class AbstractVariableObject implements TypeAwareInterface {
      * @param $type
      */
     public function setType($type): void {
+        $type = is_object($type) ?? get_class($type);
         if (!$this->isInternalType($type)) {
             $parts     = \explode('\\', (string)$type);
             $local     = \array_pop($parts);
